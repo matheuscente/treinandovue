@@ -1,0 +1,18 @@
+{
+"compilerOptions": {
+"target": "ES2020",
+"module": "ESNext",
+"moduleResolution": "bundler",
+"strict": true, // ESSENCIAL — habilita todas as verificações
+"noUnusedLocals": true, // erro se declarar variável e não usar
+"noUnusedParameters": true, // erro se parâmetro não for usado
+"noFallthroughCasesInSwitch": true,
+"jsx": "preserve",
+"lib": ["ES2020", "DOM", "DOM.Iterable"],
+"paths": {
+"@/*": ["./src/*"] // permite importar com @/ em vez de ../../
+}
+},
+"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
+"references": [{ "path": "./tsconfig.json" }]
+}

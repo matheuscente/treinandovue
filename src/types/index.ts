@@ -1,8 +1,8 @@
-type Status = "active" | "paused" | "finished"
+export type Status = "active" | "paused" | "finished"
 
-type Priority =  "low" | "middle" | "hight"
+export type Priority =  "low" | "middle" | "hight"
 
-interface Project {
+export interface Project {
     id: number,
     name: string,
     description?: string,
@@ -11,7 +11,12 @@ interface Project {
     status: Status
 }
 
-interface task {
+export interface user {
+    username: string,
+    password: string
+}
+
+export interface task {
     id: number,
     title: string,
     finished: boolean,
@@ -20,13 +25,18 @@ interface task {
     term?: Date
 }
 
-interface ApiResponse<T> {
+export interface ApiResponse<T> {
     data: T,
     message: string,
     success: boolean,
     total?: number
 }
 
-type newProject = Omit<Project, 'id | creationDate'>
+export interface Entrada {
+valor: number
+operacao: 'dec' | 'inc' | 'res'
+}
 
-type projectEdit = Partial<newProject>
+export type newProject = Omit<Project, 'id | creationDate'>
+
+export type projectEdit = Partial<newProject>

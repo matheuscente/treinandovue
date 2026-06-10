@@ -1,16 +1,34 @@
 <script setup lang="ts">
+import { useAuthStore } from '@/modules/auth/store/auth.ts';
 import MenuItem from './MenuItem.vue';
+import { useRouter } from 'vue-router';
+
+    const authStore = useAuthStore()
+    const router = useRouter()
+
+    const handleLogout = async () => {
+        console.log("clickou")
+        await authStore.logout()
+
+        router.replace({ name: "Auth" })
+    }
 
 </script>
 
 <template>
     <header id="header">
+        <div>
+            <span>Usuário: {{ authStore.user?.username }}</span>
+        </div>
         <nav>
             <ul class="header-list">
                 <MenuItem to="/" label="home" />
                 <MenuItem to="/auth" label="autentication" />
                 <MenuItem to="/counter" label="counter" />
                 <MenuItem to="/counter/pinia" label=" pinia counter" />
+                <MenuItem to="/counter/pinia" label=" pinia counter" />
+                <li @click="handleLogout"><button>logout</button></li>
+
             </ul>
         </nav>
     </header>

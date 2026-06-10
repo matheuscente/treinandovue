@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import { useAuthStore } from '@/modules/auth/store/auth.ts';
 import Header from '../components/Header.vue';
+import Loading from '../components/Loading.vue';
+
+const authStore = useAuthStore()
 </script>
 
 <template>
-    <div class="container">
+    <Loading v-if="authStore.isLoading" />
+    <div v-else class="container">
         <Header />
         <div>
             <main>

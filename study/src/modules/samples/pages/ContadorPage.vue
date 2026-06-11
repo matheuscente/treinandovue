@@ -1,6 +1,7 @@
 <template>
     <div>
-        <Title text="this is my counter"
+        <Title
+        text="this is my counter"
                 subtitle="please, test it!">
             </Title>
 
@@ -11,17 +12,17 @@
         </div>
 
         <div class="buttons">
-            <button @click="increment">
-                +
-            </button>
+            <CounterButton label="+" @action="increment">
+                
+            </CounterButton>
 
-            <button @click="decrement">
-                -
-            </button>
+            <CounterButton label="-" @action="decrement">
+                
+            </CounterButton>
 
-            <button @click="reset">
-                reset
-            </button>
+            <CounterButton label="reset" @action="reset">
+                
+            </CounterButton>
         </div>
 
     </div>
@@ -31,6 +32,7 @@
     import { computed, ref } from 'vue';
 import Title from '../../shared/components/Title.vue';
 import { useCounterStore } from '../stores/counter.ts';
+import CounterButton from '@/modules/shared/components/CounterButton.vue';
 
     const pinia = useCounterStore()
 
@@ -51,6 +53,7 @@ import { useCounterStore } from '../stores/counter.ts';
     const reset = () => {
         count.value = 0
     }
+
 </script>
 
 <style scoped>

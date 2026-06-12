@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/modules/auth/store/auth.ts';
-import Header from '../components/Header.vue';
-import Loading from '../components/Loading.vue';
+import Header from '@/shared/components/Header.vue';
+import Loading from '@/shared/components/Loading.vue';
 
 const authStore = useAuthStore()
 </script>

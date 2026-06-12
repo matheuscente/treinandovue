@@ -30,9 +30,9 @@
 
 <script setup lang="ts">
     import { computed, ref } from 'vue';
-import Title from '../../shared/components/Title.vue';
+import Title from '../../../shared/components/Title.vue';
 import { useCounterStore } from '../stores/counter.ts';
-import CounterButton from '@/modules/shared/components/CounterButton.vue';
+import CounterButton from '@/shared/components/CounterButton.vue';
 
     const pinia = useCounterStore()
 

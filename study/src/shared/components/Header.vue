@@ -7,7 +7,8 @@ import { useRouter } from 'vue-router';
     const router = useRouter()
 
     const handleLogout = async () => {
-
+        await authStore.logout()
+        authStore.user = null
         router.replace({ name: "Auth" })
     }
 
@@ -24,7 +25,7 @@ import { useRouter } from 'vue-router';
                 <MenuItem to="/auth" label="autentication" />
                 <MenuItem to="/counter" label="counter" />
                 <MenuItem to="/counter/pinia" label=" pinia counter" />
-                <MenuItem to="/counter/pinia" label=" pinia counter" />
+                <MenuItem to="/slot" label="slot test" />
                 <li @click="handleLogout"><button>logout</button></li>
 
             </ul>

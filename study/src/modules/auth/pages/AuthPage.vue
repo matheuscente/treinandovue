@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from '../store/auth';
-import Loading from '@/modules/shared/components/Loading.vue';
+import Loading from '@/shared/components/Loading.vue';
 
     const authStore = useAuthStore()
     const router = useRouter()

@@ -2,7 +2,8 @@ import AuthPage from "@/modules/auth/pages/AuthPage.vue";
 import ContadorPage from "@/modules/samples/pages/ContadorPage.vue";
 import CounterPiniaPage from "@/modules/samples/pages/CounterPiniaPage.vue";
 import HomePage from "@/modules/samples/pages/HomePage.vue";
-import AppLayout from "@/modules/shared/layouts/AppLayout.vue";
+import SlotPage from "@/modules/samples/pages/SlotPage.vue";
+import AppLayout from "@/shared/layouts/AppLayout.vue"
 import type { RouteRecordRaw } from "vue-router";
 
 export const routes: RouteRecordRaw[] = [
@@ -10,7 +11,10 @@ export const routes: RouteRecordRaw[] = [
     {
         name: "Auth",
         path: "/auth",
-        component: AuthPage
+        component: AuthPage,
+        meta: {
+            title: "Login"
+        }
     },
 
     {
@@ -21,19 +25,37 @@ export const routes: RouteRecordRaw[] = [
             {
                 name: "Home",
                 path: "",
-                component: HomePage
+                component: HomePage,
+                meta: {
+                    title: "Homepage"
+                }
             },
 
             {
                 name: "Counter",
                 path: "counter",
-                component: ContadorPage
+                component: ContadorPage,
+                meta: {
+                    title: "Counter"
+                }
             },
 
             {
                 name: "Counter Pinia",
                 path: "counter/pinia",
-                component: CounterPiniaPage
+                component: CounterPiniaPage,
+                meta: {
+                    title: "Pinia counter"
+                }
+            },
+
+            {
+                name: "slot",
+                path: "slot",
+                component: SlotPage,
+                meta: {
+                    title: "Slotpage"
+                }
             }
         ]
 

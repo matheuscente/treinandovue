@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-    import Title from '@/modules/shared/components/Title.vue';
+    import Title from '@/shared/components/Title.vue';
 import { useCounterStore } from '../stores/counter';
 
     const counterStore = useCounterStore()

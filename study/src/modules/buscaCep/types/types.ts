@@ -1,0 +1,5 @@
+export type { InputConfig } from "@/modules/buscaCep/types/inputConfig"
+export type { RadioConfig } from "@/modules/buscaCep/types/radioConfig"
+export type { SearchInputConfig } from "@/modules/buscaCep/types/searchInputConfig"
+export type { Cep } from "@/modules/buscaCep/types/cep"
+export type { SearchData } from "@/modules/buscaCep/types/searchData"

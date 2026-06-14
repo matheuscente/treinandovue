@@ -1,4 +1,5 @@
 import AuthPage from "@/modules/auth/pages/AuthPage.vue";
+import BuscaCepView from "@/modules/buscaCep/views/BuscaCep.view.vue";
 import ContadorPage from "@/modules/samples/pages/ContadorPage.vue";
 import CounterPiniaPage from "@/modules/samples/pages/CounterPiniaPage.vue";
 import HomePage from "@/modules/samples/pages/HomePage.vue";
@@ -55,6 +56,15 @@ export const routes: RouteRecordRaw[] = [
                 component: SlotPage,
                 meta: {
                     title: "Slotpage"
+                }
+            },
+
+            {
+                name: "CEPSearch",
+                path: "CEPSearch",
+                component: BuscaCepView,
+                meta: {
+                    title: "CEP Search"
                 }
             }
         ]

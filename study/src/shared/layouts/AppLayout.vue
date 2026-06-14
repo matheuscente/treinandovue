@@ -8,9 +8,9 @@ const authStore = useAuthStore()
 
 <template>
     <Loading v-if="authStore.isLoading" />
-    <div v-else class="container">
+    <div v-else>
         <Header />
-        <div>
+        <div class="container">
             <main>
                 <RouterView />
             </main>

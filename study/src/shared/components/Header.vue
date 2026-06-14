@@ -2,6 +2,7 @@
 import { useAuthStore } from '@/modules/auth/store/auth.ts';
 import MenuItem from './MenuItem.vue';
 import { useRouter } from 'vue-router';
+import BaseButton from './BaseButton.vue';
 
     const authStore = useAuthStore()
     const router = useRouter()
@@ -17,7 +18,7 @@ import { useRouter } from 'vue-router';
 <template>
     <header id="header">
         <div>
-            <span>Usuário: {{ authStore.user?.username }}</span>
+            <span class="user">Usuário: {{ authStore.user?.username }}</span>
         </div>
         <nav>
             <ul class="header-list">
@@ -26,7 +27,16 @@ import { useRouter } from 'vue-router';
                 <MenuItem to="/counter" label="counter" />
                 <MenuItem to="/counter/pinia" label=" pinia counter" />
                 <MenuItem to="/slot" label="slot test" />
-                <li @click="handleLogout"><button>logout</button></li>
+                <MenuItem to="/CEPSearch" label="CEP Search" />
+
+                <li>
+                    <BaseButton
+                    @action="handleLogout"
+                    type="button"
+                    >
+                    logout
+                    </BaseButton>
+                </li>
 
             </ul>
         </nav>
@@ -40,7 +50,7 @@ import { useRouter } from 'vue-router';
         background-color: gray;
         padding: 10px 20px;
         border-radius: 4px;
-        min-width: 100vw;
+        max-width: 100vw;
     }
 
     .header-list {
@@ -49,5 +59,9 @@ import { useRouter } from 'vue-router';
         gap: 1rem;
         justify-content: center;
         align-items: center;
+    }
+
+    .user {
+        display: inline-block
     }
 </style>

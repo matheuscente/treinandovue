@@ -3,7 +3,10 @@
     <div v-else class="container">
         <h1>AUTH PAGE</h1>
         <div>
-            <button @click="handleLogin">login</button>
+            <BaseButton @action="handleLogin"
+             type="button">
+             login
+            </BaseButton>
         </div>
     </div>
 
@@ -20,6 +23,7 @@
 import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from '../store/auth';
 import Loading from '@/shared/components/Loading.vue';
+import BaseButton from '@/shared/components/BaseButton.vue';
 
     const authStore = useAuthStore()
     const router = useRouter()

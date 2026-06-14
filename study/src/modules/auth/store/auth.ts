@@ -9,7 +9,7 @@ export const useAuthStore = defineStore('auth', () => {
     const isAuth = computed(() => !!user.value)
 
     const simulateAPI = async () => {
-        await new Promise((resolve) => setTimeout(resolve, 3000))
+        await new Promise((resolve) => setTimeout(resolve, 2000))
     }
 
     const login = async (username: string, password: string) => {

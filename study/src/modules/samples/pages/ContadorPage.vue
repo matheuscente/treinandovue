@@ -12,17 +12,26 @@
         </div>
 
         <div class="buttons">
-            <CounterButton label="+" @action="increment">
-                
-            </CounterButton>
+            <BaseButton
+                @action="increment"
+                type="button"
+                >
+                +
+            </BaseButton>
 
-            <CounterButton label="-" @action="decrement">
-                
-            </CounterButton>
+            <BaseButton
+                @action="decrement"
+                type="button"
+                >
+                -
+            </BaseButton>
 
-            <CounterButton label="reset" @action="reset">
-                
-            </CounterButton>
+            <BaseButton
+                @action="reset"
+                type="button"
+                >
+                reset
+            </BaseButton>
         </div>
 
     </div>
@@ -32,7 +41,7 @@
     import { computed, ref } from 'vue';
 import Title from '../../../shared/components/Title.vue';
 import { useCounterStore } from '../stores/counter.ts';
-import CounterButton from '@/shared/components/CounterButton.vue';
+import BaseButton from '@/shared/components/BaseButton.vue';
 
     const pinia = useCounterStore()
 

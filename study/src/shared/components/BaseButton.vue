@@ -1,12 +1,17 @@
 <template>
-    <button @click="defineAction"> {{ props.label }}</button>
+    <button @click="defineAction" 
+            :type="props.type ?? 'button'"
+            :disabled="props.disabled">
+             <slot></slot>
+            </button>
 </template>
 
 <script setup lang="ts">
 
 
     interface btnProps {
-        label: string
+        type?: "submit" | "button" | "reset",
+        disabled?: boolean
     }
 
     const props = defineProps<btnProps>()

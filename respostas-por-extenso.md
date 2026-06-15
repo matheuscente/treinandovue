@@ -29,3 +29,5 @@ async function buscarDados (): Promise<Projeto[]> {
 }
 
 Lembre-se: o TS infere bem primitivos com valor inicial. Mas null, [], funções semparâmetros tipados e retornos de Promise precisam de anotação explícita.
+
+

@@ -12,13 +12,12 @@
 
 <script setup lang="ts">
 
-import { computed, ref } from 'vue';
-import SearchForm from '../components/searchForm.vue';
+import { computed } from 'vue';
+import SearchForm from '../components/SearchForm.vue';
 import ShowResult from '../components/showResult.vue';
 import { useBuscaCep } from '../composables/useBuscaCep.ts';
 import type { SearchData } from '../types/searchData.ts';
 import Loading from '@/shared/components/Loading.vue';
-import { l } from 'vue-router/dist/index-BQLwgiyK.js';
 
 const {
     loading,

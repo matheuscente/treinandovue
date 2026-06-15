@@ -26,7 +26,6 @@
 </template>
 
 <script setup lang="ts">
-import Loading from '@/shared/components/Loading.vue';
 import type { Cep } from '../types/cep';
 
 interface Props {

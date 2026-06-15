@@ -1,12 +1,12 @@
 <template>
     <form @submit.prevent="searchData">
         <div>
-            <BaseRadio v-model="search" v-bind="radioData" />
+            <BaseRadio v-model="search" v-bind="radioDataConfig" />
         </div>
         <div>
-            <BaseInput v-if="search === 'C'" v-model="searchForCep" v-bind="cepInput" />
+            <BaseInput v-if="search === 'C'" v-model="searchForCep" v-bind="cepInputConfig" />
 
-            <BaseInput v-else v-for="data in inputData" :key="data.field" v-model="searchForAddress[data.field]"
+            <BaseInput v-else v-for="data in inputDataConfig" :key="data.field" v-model="searchForAddress[data.field]"
                 v-bind="data" />
         </div>
 
@@ -14,7 +14,7 @@
             <BaseButton type="submit">
                 PESQUISAR
             </BaseButton>
-            <BaseButton type="button">
+            <BaseButton @click="btnBack" type="button">
                 VOLTAR
             </BaseButton>
         </div>
@@ -27,14 +27,15 @@
 import type { SearchForAddress } from '@/shared/types/searchForAddress'
 import { ref, reactive } from 'vue'
 import {
-    radioData,
-    cepInput,
-    inputData
+    radioDataConfig,
+    cepInputConfig,
+    inputDataConfig
 } from "../configs/formConfig"
 import BaseRadio from '@/shared/components/BaseRadio.vue'
 import BaseButton from '@/shared/components/BaseButton.vue'
 import BaseInput from '@/shared/components/BaseInput.vue'
 import type { SearchData } from '../types/searchData'
+import router from '@/router'
 
 const emit = defineEmits<{
     "search": [data: SearchData]
@@ -62,6 +63,10 @@ const searchForAddress = reactive<SearchForAddress>({
     cidade: '',
     estado: ''
 })
+
+const btnBack  = () => {
+    router.back()
+}
 
 </script>
 

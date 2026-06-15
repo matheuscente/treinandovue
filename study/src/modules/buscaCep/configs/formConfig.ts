@@ -1,6 +1,6 @@
 import type { InputConfig, RadioConfig, SearchInputConfig } from '../types/types';
 
-export const radioData: RadioConfig = {
+export const radioDataConfig: RadioConfig = {
     name: 'searchType',
     legend: "Buscar por",
     options: [
@@ -16,7 +16,7 @@ export const radioData: RadioConfig = {
     ]
 }
 
-export const cepInput: InputConfig = {
+export const cepInputConfig: InputConfig = {
     label: "CEP",
     id: "cep",
     type: "text",
@@ -24,7 +24,7 @@ export const cepInput: InputConfig = {
     field: "cep"
 }
 
-export const inputData: SearchInputConfig[] = [
+export const inputDataConfig: SearchInputConfig[] = [
 
     {
         label: 'Rua',

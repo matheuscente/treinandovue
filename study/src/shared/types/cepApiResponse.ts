@@ -1,4 +1,4 @@
- interface CEP {
+ export interface CepApiResponse {
     localidade: string,
     estado: string,
     uf: string,
@@ -8,8 +8,3 @@
     cep: string
 }
 
-interface CepError {
-    erro: true
-}
-
-export type CepApiResponse = CEP | CepError

@@ -1,6 +1,5 @@
 import { searchWithAddressService, searchWithCepService } from '../services/searchService'
-import type { Cep } from '../types/types'
-import type { SearchForAddress } from '@/shared/types/types'
+import type { Cep, SearchData } from '../types/types'
 import { useAsync } from '@/shared/composables/UseAsync'
 import { computed } from 'vue'
 
@@ -23,22 +22,22 @@ export const useBuscaCep = () => {
   //se cepAsync ou addressAsync estiverem carregando, retorna TRUE
   const loading = computed(() => cepAsync.loading.value || addressAsync.loading.value)
 
-
+  //se der algum erro na consulta dos dados, retorna erro, senão null
   const error = computed(() => cepAsync.error.value ?? addressAsync.error.value)
 
+  //mapeia o retorno dos dados da busca por cep
   const cepData = computed(() => cepAsync.data.value ? mapCep(cepAsync.data.value) : null)
 
-    const addressData = computed(() => {
-  
-    return addressAsync.data.value ? addressAsync.data.value.map(mapCep) : []
-  })
+  //mapeia o retorno dos dados da busca por endereço
+  const addressData = computed(() => addressAsync.data.value ? addressAsync.data.value.map(mapCep) : [])
 
-  const searchWithCep = async (cep: string) => {
-    await cepAsync.execute(cep)
-  }
+  const search = async (data: SearchData) => {
+    if(data.searchType === "C") {
+      await cepAsync.execute(data.data)
+    } else {
+        await addressAsync.execute(data.data)
+    }
 
-  const searchWithAddress = async (address: SearchForAddress) => {
-    await addressAsync.execute(address)
   }
 
   return {
@@ -51,9 +50,7 @@ export const useBuscaCep = () => {
 
     error,
 
-    searchWithCep,
+    search
 
-    searchWithAddress
-
-}
+  }
 }

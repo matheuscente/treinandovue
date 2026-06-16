@@ -1,10 +1,18 @@
 <template>
-    <button @click="defineAction" 
+    <button @click="defineAction" class="btn"
             :type="props.type ?? 'button'"
             :disabled="props.disabled">
              <slot></slot>
             </button>
 </template>
+
+<style scoped>
+    .btn {
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 5px 10px;
+    }
+</style>
 
 <script setup lang="ts">
 

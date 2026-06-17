@@ -4,7 +4,7 @@
         <BaseButton type="submit">
             PESQUISAR
         </BaseButton>
-        <BaseButton @click="btnBack" type="button">
+        <BaseButton @click="back" type="button">
             VOLTAR
         </BaseButton>
     </div>
@@ -14,7 +14,7 @@
 import router from '@/router';
 import  BaseButton from "@/shared/components/BaseButton.vue"
 
-const btnBack = () => {
+const back = () => {
     router.back()
 }
 

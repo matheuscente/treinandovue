@@ -1,5 +1,6 @@
+import { ref } from 'vue'
 import { searchWithAddressService, searchWithCepService } from '../services/searchService'
-import type { Cep, SearchData } from '../types/types'
+import type { Cep, SearchData, SearchType } from '../types/types'
 import { useAsync } from '@/shared/composables/UseAsync'
 import { computed } from 'vue'
 
@@ -19,19 +20,21 @@ export const useBuscaCep = () => {
   const cepAsync = useAsync(searchWithCepService)
   const addressAsync = useAsync(searchWithAddressService)
 
-  //se cepAsync ou addressAsync estiverem carregando, retorna TRUE
-  const loading = computed(() => cepAsync.loading.value || addressAsync.loading.value)
+    //guarda o tipo da busca atual
+  const currentSearchType = ref<SearchType>("C")
+  const loading = computed(() => currentSearchType.value === "C" ? cepAsync.loading.value : addressAsync.loading.value)
 
-  //se der algum erro na consulta dos dados, retorna erro, senão null
-  const error = computed(() => cepAsync.error.value ?? addressAsync.error.value)
+  const error = computed(() => currentSearchType.value === "C" ? cepAsync.error.value : addressAsync.error.value)
 
-  //mapeia o retorno dos dados da busca por cep
-  const cepData = computed(() => cepAsync.data.value ? mapCep(cepAsync.data.value) : null)
-
-  //mapeia o retorno dos dados da busca por endereço
-  const addressData = computed(() => addressAsync.data.value ? addressAsync.data.value.map(mapCep) : [])
+  const returnData = computed(() => {
+    if(currentSearchType.value === "C") return cepAsync.data.value ? [mapCep(cepAsync.data.value)] : []
+    return addressAsync.data.value ? addressAsync.data.value.map(mapCep) : []
+  })
 
   const search = async (data: SearchData) => {
+    //define tipo da busca atual, para sempre usar os dados atualizados
+    currentSearchType.value = data.searchType
+
     if(data.searchType === "C") {
       await cepAsync.execute(data.data)
     } else {
@@ -42,9 +45,7 @@ export const useBuscaCep = () => {
 
   return {
 
-    cepData,
-
-    addressData,
+    returnData,
 
     loading,
 

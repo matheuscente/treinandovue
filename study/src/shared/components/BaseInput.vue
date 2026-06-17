@@ -7,8 +7,7 @@
                 :id="props.id"
                 :type="props.type"
                 :placeholder="props.placeholder"
-                :value="props.modelValue"
-                @input="handleInput"
+                v-model="value"
                 
         >
     </div>
@@ -21,15 +20,8 @@ import type { BaseInputProps } from '../types/types';
 
     const props = defineProps<BaseInputProps>()
 
-    const emit = defineEmits<{
-        "update:modelValue": [value: string]
-    }>()
+    const value = defineModel<string>()
 
-    const handleInput = (event: Event) => {
-        const input = event.target as HTMLInputElement
-
-        emit("update:modelValue", input.value)
-    }
 </script>
 
 <style scoped></style>

@@ -13,6 +13,7 @@ export const useAsync = <T, P>(fn: (param: P) => Promise<T>) => {
     async function execute(param: P) {
         loading.value = true
         error.value = null
+        data.value = null
 
         try {
             data.value = await fn(param) //fn é a função passada por parametro

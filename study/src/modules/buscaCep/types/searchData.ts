@@ -1,11 +1,4 @@
-import type { SearchForAddress } from "@/shared/types/types"
+import type z from "zod"
+import { searchSchema } from "../schemas/searchForm.schema"
 
-export type SearchData =
-    | {
-          searchType: "C"
-          data: string
-      }
-    | {
-          searchType: "E"
-          data: SearchForAddress
-      }
+export type SearchData = z.infer<typeof searchSchema>

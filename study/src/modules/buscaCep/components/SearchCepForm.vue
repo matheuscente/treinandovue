@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BaseInput v-model="searchForCEP" v-bind="cepInputConfig" />
+        <BaseInput v-model="searchForCEP" v-bind="cepInputConfig" :error="props.error"/>
     </div>
 
 </template>
@@ -15,6 +15,11 @@ const searchForCEP = defineModel<string>({
     default: ""
 })
 
+interface Props {
+    error?: string
+}
+
+const props = defineProps<Props>()
 
 </script>
 

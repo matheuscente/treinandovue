@@ -8,8 +8,8 @@
                 :type="props.type"
                 :placeholder="props.placeholder"
                 v-model="value"
-                
         >
+        <small>{{ props.error }}</small>
     </div>
 
 </template>

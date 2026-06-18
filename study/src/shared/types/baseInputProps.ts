@@ -1,11 +1,10 @@
-import type { SearchForAddress } from "./searchForAddress";
 
 export interface BaseInputProps {
     id: string,
     label: string,
     type: string,
     placeholder: string,
-    disabled?: string,
+    disabled?: boolean,
     readOnly?: boolean,
     required?: boolean,
     error?: string,

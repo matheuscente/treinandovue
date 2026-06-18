@@ -4,3 +4,4 @@ export type { SearchInputConfig } from "@/modules/buscaCep/types/searchInputConf
 export type { Cep } from "@/modules/buscaCep/types/cep"
 export type { SearchData } from "@/modules/buscaCep/types/searchData"
 export type { SearchType } from "@/modules/buscaCep/types/searchType"
+export type { ErrorType } from "@/modules/buscaCep/types/errorType"

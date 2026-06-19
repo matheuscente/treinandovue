@@ -1,10 +1,5 @@
 <template>
-        <div v-if="props.error">
-            <span>
-                {{ props.error }}
-            </span>
-        </div>
-        <div v-else-if="props.addresses.length">
+        <div v-if="props.addresses.length">
             <h2>Resultado da busca</h2>
         <ul>
             <li class="result-list" v-for="(address, index) in props.addresses" :key="index">
@@ -29,7 +24,6 @@
 import type { Cep } from '../types/cep';
 
 interface Props {
-    error?: string | null | undefined,
     addresses: Cep[]
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <button @click="emit('click', $event)" class="btn"
+    <button @click="emit('action', $event)" class="btn"
             :type="props.type ?? 'button'"
             :disabled="props.disabled">
              <slot></slot>
@@ -25,6 +25,6 @@
     const props = defineProps<btnProps>()
 
     const emit = defineEmits<{
-        click: [event: MouseEvent]
+        action: [event: MouseEvent]
     }>()
 </script>

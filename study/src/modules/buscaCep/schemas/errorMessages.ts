@@ -6,13 +6,13 @@ export const messages = {
 
     address: {
         street: {
-            maxLength: "A rua deve possuir pelo menos 2 dígitos!",
-            minLength: "A rua deve possuir no máximo 50 dígitos!"
+            minLength: "A rua deve possuir pelo menos 3 dígitos!",
+            maxLength: "A rua deve possuir no máximo 50 dígitos!"
         },
 
         city: {
-            maxLength: "A cidade deve possuir pelo menos 2 dígitos!",
-            minLength: "A cidade deve possuir no máximo 50 dígitos!"
+            minLength: "A cidade deve possuir pelo menos 3 dígitos!",
+            maxLength: "A cidade deve possuir no máximo 50 dígitos!"
         },
 
         state: {

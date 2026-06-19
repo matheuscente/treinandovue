@@ -26,6 +26,11 @@ export const useBuscaCep = () => {
 
   const error = computed(() => currentSearchType.value === "C" ? cepAsync.error.value : addressAsync.error.value)
 
+  const clearErrors = () => {
+    cepAsync.error.value = null
+    addressAsync.error.value = null
+  }
+
   const returnData = computed(() => {
     if(currentSearchType.value === "C") return cepAsync.data.value ? [mapCep(cepAsync.data.value)] : []
     return addressAsync.data.value ? addressAsync.data.value.map(mapCep) : []
@@ -36,7 +41,7 @@ export const useBuscaCep = () => {
     currentSearchType.value = data.searchType
 
     if(data.searchType === "C") {
-      await cepAsync.execute(data.data)
+      await cepAsync.execute(data.data.cep)
     } else {
         await addressAsync.execute(data.data)
     }
@@ -50,6 +55,8 @@ export const useBuscaCep = () => {
     loading,
 
     error,
+
+    clearErrors,
 
     search
 

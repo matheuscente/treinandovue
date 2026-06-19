@@ -9,10 +9,10 @@ export const useAuthStore = defineStore('auth', () => {
     const isAuth = computed(() => !!user.value)
 
     const simulateAPI = async () => {
-        await new Promise((resolve) => setTimeout(resolve, 2000))
+        await new Promise((resolve) => setTimeout(resolve, 500))
     }
 
-    const login = async (username: string, password: string) => {
+    const login = async () => {
 
         try {
             isLoading.value = true

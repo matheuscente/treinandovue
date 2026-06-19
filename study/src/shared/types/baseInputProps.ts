@@ -1,3 +1,5 @@
+import type { ErrorType } from "@/modules/buscaCep/types/errorType";
+import type { ScreenState } from "@/modules/buscaCep/types/screenState";
 
 export interface BaseInputProps {
     id: string,
@@ -7,6 +9,7 @@ export interface BaseInputProps {
     disabled?: boolean,
     readOnly?: boolean,
     required?: boolean,
-    error?: string,
-    field: string
+    error?: ErrorType | string,
+    field: string,
+    screenState: ScreenState
 }

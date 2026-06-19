@@ -2,6 +2,7 @@
         <div>
             <BaseInput v-for="data in inputDataConfig" :key="data.field" v-model="searchForAddress[data.field]"
                 v-bind="data"
+                :screen-state="props.screenState"
                 :error="props.errors[data.field]" />
         </div>
 </template>
@@ -12,14 +13,14 @@ import {
     inputDataConfig
 } from "../configs/formConfig"
 import BaseInput from '@/shared/components/BaseInput.vue'
-import type { ErrorType } from '../types/types'
+import type { ErrorType, ScreenState } from '../types/types'
 
 interface Props {
-    errors: ErrorType
+    errors: ErrorType,
+    screenState: ScreenState
 }
 
 const props = defineProps<Props>()
-
 
 const searchForAddress = defineModel<SearchForAddress>({
     default: {

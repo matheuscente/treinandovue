@@ -16,11 +16,11 @@ export const searchSchema = z.discriminatedUnion("searchType", [
 
         data: z.object({
             rua: z.string()
-                .min(2, messages.address.street.minLength)
+                .min(3, messages.address.street.minLength)
                 .max(50, messages.address.street.maxLength),
 
             cidade: z.string()
-                .min(2, messages.address.city.minLength)
+                .min(3, messages.address.city.minLength)
                 .max(50, messages.address.city.maxLength),
 
             estado: z.string()

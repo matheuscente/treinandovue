@@ -9,7 +9,7 @@
                 :placeholder="props.placeholder"
                 v-model="value"
         >
-        <small>{{ props.error }}</small>
+        <small v-if="props.screenState === 'validationError'">{{ props.error }}</small>
     </div>
 
 </template>

@@ -4,7 +4,7 @@
         <BaseButton type="submit">
             PESQUISAR
         </BaseButton>
-        <BaseButton @click="back" type="button">
+        <BaseButton @action="back" type="button">
             VOLTAR
         </BaseButton>
     </div>

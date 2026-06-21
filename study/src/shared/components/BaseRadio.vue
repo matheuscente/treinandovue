@@ -16,9 +16,9 @@
 </template>
 
 <script setup lang="ts">
-import type { BaseRadioProps } from "@/shared/types/types"
+import type { RadioConfig } from "@/shared/types/types"
 
-const props = defineProps < BaseRadioProps > ()
+const props = defineProps < RadioConfig > ()
 
 const checked = defineModel<string>()
 

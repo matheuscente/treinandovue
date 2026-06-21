@@ -28,6 +28,7 @@ import BaseButton from './BaseButton.vue';
                 <MenuItem to="/counter/pinia" label=" pinia counter" />
                 <MenuItem to="/slot" label="slot test" />
                 <MenuItem to="/CEPSearch" label="CEP Search" />
+                <MenuItem to="/projectSearch" label="Project Search" />
 
                 <li>
                     <BaseButton

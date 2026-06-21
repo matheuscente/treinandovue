@@ -1,9 +1,7 @@
 <script setup lang="ts">
+import type { TitleProps } from '../types/types';
 
-    interface TitleProps {
-        text: string,
-        subtitle?: string
-    }
+ 
 
     const props = defineProps<TitleProps>()
     

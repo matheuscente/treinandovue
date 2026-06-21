@@ -15,26 +15,24 @@ import SearchForm from '../components/SearchForm.vue';
 import { useBuscaCep } from '../composables/useBuscaCep.ts';
 import type { SearchData } from '../types/searchData.ts';
 import ShowResult from '../components/showResult.vue';
-import type { ScreenState } from '../types/types.ts';
-import { ref } from 'vue';
 import ShowAPIErrors from '../components/ShowAPIErrors.vue';
+import { useScreenStateStore } from '@/shared/stores/useScreenState.ts';
 
 const { error, returnData, search } = useBuscaCep()
-
-const screenState = ref<ScreenState>("idle")
+const { screenState, setState } = useScreenStateStore()
 
 const handleSearch = async (data: SearchData) => {
 
-    screenState.value = "loading"
+    setState("loading")
 
         await search(data)
 
         if (error.value) {
-            screenState.value = "requestError"
+        setState("requestError")
             return
         }
 
-        screenState.value = "success"
+        setState("success")
     
 }
 </script>

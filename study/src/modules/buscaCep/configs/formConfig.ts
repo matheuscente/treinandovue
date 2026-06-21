@@ -1,4 +1,4 @@
-import type { InputConfig, RadioConfig, SearchInputConfig } from '../types/types';
+import type { BaseInputProps, RadioConfig, SearchInputConfig } from '../types/types';
 
 export const radioDataConfig: RadioConfig = {
     name: 'searchType',
@@ -16,12 +16,11 @@ export const radioDataConfig: RadioConfig = {
     ]
 }
 
-export const cepInputConfig: InputConfig = {
+export const cepInputConfig: BaseInputProps = {
     label: "CEP",
     id: "cep",
     type: "text",
-    placeholder: "86430000",
-    field: "cep"
+    placeholder: "86430000"
 }
 
 export const inputDataConfig: SearchInputConfig[] = [

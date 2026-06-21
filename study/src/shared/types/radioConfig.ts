@@ -1,6 +1,6 @@
 import type { Option } from "@/shared/types/types"
 
-export interface BaseRadioProps {
+export type RadioConfig = {
     name: string,
     legend?: string,
     options: Option[]

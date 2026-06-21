@@ -30,7 +30,7 @@ import BaseButton from '@/shared/components/BaseButton.vue';
     const route = useRoute()
 
     const handleLogin = async () => {
-        await authStore.login('user', '123')
+        await authStore.login()
         redirect()
     }
 

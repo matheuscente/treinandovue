@@ -15,7 +15,7 @@ import { radioDataConfig } from '../configs/formConfig.ts';
 import { ref } from 'vue';
 import BaseRadio from '@/shared/components/BaseRadio.vue';
 import type { SearchForAddress } from '@/shared/types/searchForAddress.ts';
-import FormButtons from './FormButtons.vue';
+import FormButtons from '@/shared/components/FormButtons.vue';
 import type { SearchData } from '../types/searchData.ts';
 import type { ScreenState, SearchType } from '../types/types.ts';
 import { useSearchDataValidation } from '../composables/useSearchDataValidation.ts';

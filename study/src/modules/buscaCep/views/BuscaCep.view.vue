@@ -1,8 +1,7 @@
 <template>
     <Loading v-if="screenState === 'loading'" />
     <SearchForm @search="handleSearch"
-                @input-validation-error="screenState = 'validationError'"
-                @change="screenState = 'idle'"
+                @input-validation-error="handleValidationError"
                 :screen-state="screenState"
     />
     <ShowResult v-if="screenState === 'success'" :addresses="returnData" />
@@ -17,9 +16,14 @@ import type { SearchData } from '../types/searchData.ts';
 import ShowResult from '../components/showResult.vue';
 import ShowAPIErrors from '../components/ShowAPIErrors.vue';
 import { useScreenStateStore } from '@/shared/stores/useScreenState.ts';
-
 const { error, returnData, search } = useBuscaCep()
-const { screenState, setState } = useScreenStateStore()
+const screenStateStore = useScreenStateStore()
+const { setState } = screenStateStore
+const { screenState } = screenStateStore
+
+const handleValidationError = () => {
+    setState('validationError')
+}
 
 const handleSearch = async (data: SearchData) => {
 

@@ -1,8 +1,8 @@
 <template>
     <form @submit.prevent="handleSubmit">
         <BaseRadio v-model="searchType" v-bind="radioDataConfig" @change="emit('change')"/>
-        <SearchCepForm v-if="searchType === 'C'" v-model="cep" :error="errors" :screen-state="props.screenState" />
-        <SearchAddressForm v-else v-model="address" :errors="errors" :screen-state="props.screenState" />
+        <SearchCepForm v-if="searchType === 'C'" v-model="cep" :error="errors" />
+        <SearchAddressForm v-else v-model="address" :errors="errors" />
         <FormButtons />
     </form>
 </template>
@@ -17,18 +17,21 @@ import BaseRadio from '@/shared/components/BaseRadio.vue';
 import type { SearchForAddress } from '@/shared/types/searchForAddress.ts';
 import FormButtons from '@/shared/components/FormButtons.vue';
 import type { SearchData } from '../types/searchData.ts';
-import type { ScreenState, SearchType } from '../types/types.ts';
-import { useSearchDataValidation } from '../composables/useSearchDataValidation.ts';
+import type { SearchType } from '../types/types.ts';
+import { useValidation } from '@/shared/composables/useValidation.ts';
+import { searchSchema } from '../schemas/searchForm.schema.ts';
 
 const {
     errors,
     validate
-} = useSearchDataValidation()
+} = useValidation<{
+    rua: string,
+    cidade: string,
+    estado: string,
+    cep: string
+}>(searchSchema)
 
 const searchType = ref<SearchType>("C")
-    const props = defineProps<{
-    screenState: ScreenState
-}>()
 
 
 
@@ -42,7 +45,7 @@ const address = ref<SearchForAddress>({
 
 const emit = defineEmits<{
     "search": [data: SearchData],
-    "inputValidationError": [data: string],
+    "inputValidationError": [],
     "change": []
 }>()
 const handleSubmit = () => {
@@ -61,7 +64,7 @@ const handleSubmit = () => {
     const validatedData = validate(formData)
 
     if(!validatedData) {
-        emit("inputValidationError", "inputError")
+        emit("inputValidationError")
         return
     } else {
         emit("search", validatedData)

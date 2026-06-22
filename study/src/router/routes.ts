@@ -1,10 +1,4 @@
 import AuthPage from "@/modules/auth/pages/AuthPage.vue";
-import BuscaCepView from "@/modules/buscaCep/views/BuscaCep.view.vue";
-import ContadorPage from "@/modules/samples/pages/ContadorPage.vue";
-import CounterPiniaPage from "@/modules/samples/pages/CounterPiniaPage.vue";
-import HomePage from "@/modules/samples/pages/HomePage.vue";
-import SlotPage from "@/modules/samples/pages/SlotPage.vue";
-import SearchProjectView from "@/modules/searchProject/views/searchProjectView.vue"
 import AppLayout from "@/shared/layouts/AppLayout.vue"
 import type { RouteRecordRaw } from "vue-router";
 
@@ -27,7 +21,7 @@ export const routes: RouteRecordRaw[] = [
             {
                 name: "Home",
                 path: "",
-                component: HomePage,
+                component: () => import("@/modules/samples/pages/HomePage.vue"),
                 meta: {
                     title: "Homepage"
                 }
@@ -36,7 +30,7 @@ export const routes: RouteRecordRaw[] = [
             {
                 name: "Counter",
                 path: "counter",
-                component: ContadorPage,
+                component: () => import("@/modules/samples/pages/ContadorPage.vue"),
                 meta: {
                     title: "Counter"
                 }
@@ -45,7 +39,7 @@ export const routes: RouteRecordRaw[] = [
             {
                 name: "Counter Pinia",
                 path: "counter/pinia",
-                component: CounterPiniaPage,
+                component: () => import("@/modules/samples/pages/CounterPiniaPage.vue"),
                 meta: {
                     title: "Pinia counter"
                 }
@@ -54,7 +48,7 @@ export const routes: RouteRecordRaw[] = [
             {
                 name: "slot",
                 path: "slot",
-                component: SlotPage,
+                component: () => import("@/modules/samples/pages/SlotPage.vue"),
                 meta: {
                     title: "Slotpage"
                 }
@@ -63,7 +57,7 @@ export const routes: RouteRecordRaw[] = [
             {
                 name: "CEPSearch",
                 path: "CEPSearch",
-                component: BuscaCepView,
+                component: () => import("@/modules/buscaCep/views/BuscaCep.view.vue"),
                 meta: {
                     title: "CEP Search"
                 }
@@ -72,7 +66,7 @@ export const routes: RouteRecordRaw[] = [
             {
                 name: "ProjectSearch",
                 path: "ProjectSearch",
-                component: SearchProjectView,
+                component: () => import("@/modules/searchProject/views/SearchProjectView.vue"),
                 meta: {
                     title: "Project Search"
                 }

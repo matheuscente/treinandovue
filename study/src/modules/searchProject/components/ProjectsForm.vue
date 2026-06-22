@@ -27,12 +27,13 @@ const emit = defineEmits<{
 
 
 watch([busca, projectStatus], () => {
-    if (projectStatus.value !== "Selecione uma opção") {
-        emit("search", {
-            nome: busca.value,
-            projectStatus: projectStatus.value
-        })
-    }
+    if (projectStatus.value === "Selecione uma opção") return
+    
+    emit("search", {
+        nome: busca.value,
+        projectStatus: projectStatus.value
+    })
+    
 })
 
 const reset = () => {

@@ -16,12 +16,16 @@ const status = z.enum([
 export const editProjectParamsSchema = z.discriminatedUnion("editType", [
     z.object({
         editType: z.literal("nome"),
-        data: z.string().min(3, errorMessage.nome.minLength)
+        data: z.object({
+            nome: z.string().min(3, errorMessage.nome.minLength)
+        })
     }),
 
     z.object({
         editType: z.literal("status"),
-        data: status
+        data: z.object({
+            status
+        })
     }),
 
     z.object({

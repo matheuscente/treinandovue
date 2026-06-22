@@ -1,12 +1,12 @@
 <template>
     <form @submit.prevent="submit">
         <BaseRadio v-bind="editProjectRadioProps" v-model="editType" />
-        <BaseInput v-if="editType === 'nome'" v-bind="editProjectInputProps" v-model="inputName" :error="errors.data"/>
+        <BaseInput v-if="editType === 'nome'" v-bind="editProjectInputProps" v-model="inputName" :error="errors.nome"/>
         <div v-else-if="editType === 'ambos'">
             <BaseInput v-bind="editProjectInputProps" v-model="inputName" :error="errors.nome"/>
             <BaseSelect v-bind="searchProjectSelectProps" v-model="inputStatus" :error="errors.status "/>
         </div>
-        <BaseSelect v-else v-bind="searchProjectSelectProps" v-model="inputStatus" :error="errors.data"/>
+        <BaseSelect v-else v-bind="searchProjectSelectProps" v-model="inputStatus" :error="errors.status"/>
         <BaseButton type="submit">Salvar</BaseButton>
     </form>
 </template>
@@ -20,16 +20,14 @@ import type { ProjectStatus } from '../types/projectStatus';
 import type { EditProjectParams } from '../types/editProjectParams';
 import BaseButton from '@/shared/components/BaseButton.vue';
 import BaseSelect from '@/shared/components/BaseSelect.vue';
-    import { useScreenStateStore } from '@/shared/stores/useScreenState';
 import type { Project } from '../types/types';
-import { useSearchDataValidation } from '@/modules/searchProject/composables/useSearchProjectsValidation';
-
-    const {  setState } = useScreenStateStore()
+import { useValidation } from '@/shared/composables/useValidation';
+import { editProjectParamsSchema } from '../schemas/editProjectParams';
 
 const {
     errors,
     validate
-} = useSearchDataValidation()
+} = useValidation<Project>(editProjectParamsSchema)
 
 const emit = defineEmits<{
     edit: [data: EditProjectParams]
@@ -40,14 +38,18 @@ const formData = computed(() => {
         case "nome":
             return {
                 editType: editType.value,
-                data: inputName.value
+                data: {
+                    nome: inputName.value
+                }
             }
 
         case "status":
 
             return {
                 editType: editType.value,
-                data: inputStatus.value as ProjectStatus
+                data: {
+                    status: inputStatus.value as ProjectStatus
+                }
             }
 
         case "ambos":
@@ -67,14 +69,13 @@ const inputName = ref<string>("")
 const inputStatus = ref<ProjectStatus | "Selecione uma opção">("Selecione uma opção")
 
 watch(editType, () => {
-    errors.value = {} as Omit<Project, "id">
+    errors.value = {}
 })
 
 
 const submit = () => {
     const validatedData = validate(formData.value)
     if(!validatedData) {
-        setState("validationError")
         return
     }
     emit("edit", validatedData)

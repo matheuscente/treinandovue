@@ -8,7 +8,7 @@
     </option>
 </select>
 
-<small v-if="screenState">
+<small v-if="props.error">
     {{ props.error }}
 </small>
 
@@ -17,9 +17,6 @@
 
 <script setup lang="ts">
     import type{ BaseSelectProps } from '../types/baseSelectProps';
-    import { useScreenStateStore } from '../stores/useScreenState';
-
-    const { screenState } = useScreenStateStore()
 
     const props = defineProps<BaseSelectProps>()
 

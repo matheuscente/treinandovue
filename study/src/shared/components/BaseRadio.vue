@@ -7,7 +7,6 @@
         <label v-for="option in props.options" :key="option.value">
             <input type="radio" :name="props.name" :value="option.value" v-model="checked">
                 
-
             {{ option.label }}
 
         </label>

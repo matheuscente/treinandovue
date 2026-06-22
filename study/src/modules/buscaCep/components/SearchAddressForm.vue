@@ -2,7 +2,6 @@
         <div>
             <BaseInput v-for="data in inputDataConfig" :key="data.field" v-model="searchForAddress[data.field]"
                 v-bind="data"
-                :screen-state="props.screenState"
                 :error="props.errors[data.field]" />
         </div>
 </template>
@@ -13,11 +12,15 @@ import {
     inputDataConfig
 } from "../configs/formConfig"
 import BaseInput from '@/shared/components/BaseInput.vue'
-import type { ErrorType, ScreenState } from '../types/types'
+import type { ErrorType } from '../types/types'
+
 
 interface Props {
-    errors: ErrorType,
-    screenState: ScreenState
+    errors: ErrorType<{
+        rua: string,
+        cidade: string,
+        estado: string
+    }>,
 }
 
 const props = defineProps<Props>()
